@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Grotesk Fonts */
+@font-face {
+  font-family: 'Grotesk';
+  src: url('../fonts/Grotesk-Bold.woff');
+}
+
+/* Poppins Fonts */
+@font-face {
+  font-family: 'Poppins-Light';
+  src: url('../fonts/Poppins-Light.woff');
+}
+
+@font-face {
+  font-family: "Boska-Light";
+  src: url("../fonts/Boska-Light.woff") format("woff");
+}
+
+body{
+  font-family: 'Poppins-Light';
+}
+
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer & Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Edge */
+}
+
