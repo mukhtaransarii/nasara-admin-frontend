@@ -69,89 +69,73 @@ export default function Login() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-900">
-      <div className="bg-gray-800 p-6 rounded-lg shadow-md w-full max-w-sm text-white">
-        <h1 className="text-2xl font-bold mb-4 text-center">Admin Login</h1>
+    <div className="h-screen flex justify-center items-end lg:items-center">
+      <div className="bg-white  w-[85vw] lg:w-[30vw] p-3 shadow rounded mb-16 lg:mb-0">
+        <div className="w-full text-center">
+          <h1 className="text-lg font-bold">Nasara Admin</h1>
+        </div>
+        <p className="text-xs text-gray-500 text-center mb-2">Login or Signup</p>
 
         {step === 1 && (
           <>
-            <input
-              className="w-full p-2 bg-gray-700 border border-gray-600 rounded mb-3 text-white placeholder-gray-400"
-              placeholder="Enter email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <button
-              className={`w-full p-2 rounded ${email ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-600 cursor-not-allowed"}`}
-              onClick={sendOtp}
-              disabled={!email || loading}
-            >
-              {loading ? "Sending..." : "Send OTP"}
-            </button>
+            <InputField label="Email" value={email} onChange={setEmail} placeholder="Enter email" />
+            <Button onClick={sendOtp} disabled={!email || loading} loading={loading} text="Continue" />
           </>
         )}
 
         {step === 2 && (
           <>
-            <p className="text-sm text-gray-400 mb-3">
-              OTP has been sent to <span className="font-semibold text-white">{email}</span>.
-              <br /> Check inbox or spam folder.
-            </p>
-            <input
-              className="w-full p-2 bg-gray-700 border border-gray-600 rounded mb-3 text-white placeholder-gray-400"
-              placeholder="Enter OTP"
-              value={otp}
-              onChange={(e) => setOtp(e.target.value)}
-            />
-            <button
-              className={`w-full p-2 rounded ${otp ? "bg-green-600 hover:bg-green-700" : "bg-gray-600 cursor-not-allowed"}`}
-              onClick={verifyOtp}
-              disabled={!otp || loading}
-            >
-              {loading ? "Verifying..." : "Verify OTP"}
-            </button>
+            <InputField label="Enter OTP" value={otp} onChange={setOtp} placeholder="Enter OTP" />
+            <p className="text-xs text-gray-500">OTP sent to <span className="font-semibold text-black">{email}</span></p>
+            <p className="text-xs text-gray-500">Check Inbox or Spam folder</p>
+            <Button onClick={verifyOtp} disabled={!otp || loading} loading={loading} text="Verify" />
           </>
         )}
 
         {step === 3 && (
           <>
-            <h2 className="text-lg font-medium mb-2">Enter your name</h2>
-            <input
-              className="w-full p-2 bg-gray-700 border border-gray-600 rounded mb-3 text-white placeholder-gray-400"
-              placeholder="Your full name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <button
-              className={`w-full p-2 rounded ${name.trim().length >= 3 ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-600 cursor-not-allowed"}`}
-              onClick={saveName}
-              disabled={name.trim().length < 3}
-            >
-              Next
-            </button>
+            <InputField label="Your full name" value={name} onChange={setName} placeholder="Enter name" />
+            <Button onClick={saveName} disabled={name.trim().length < 3} text="Next" />
           </>
         )}
 
         {step === 4 && (
           <>
-            <h2 className="text-lg font-medium mb-2">Choose a username</h2>
-            <input
-              className="w-full p-2 bg-gray-700 border border-gray-600 rounded mb-3 text-white placeholder-gray-400"
-              placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            {usernameError && <p className="text-red-500 text-sm mb-2">{usernameError}</p>}
-            <button
-              className={`w-full p-2 rounded ${username.trim().length >= 3 ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-600 cursor-not-allowed"}`}
-              onClick={saveUsername}
-              disabled={!username || loading}
-            >
-              {loading ? "Saving..." : "Save & Login"}
-            </button>
+            <InputField label="Username" value={username} onChange={setUsername} placeholder="Choose username" />
+            {usernameError && <p className="text-red-500 text-xs mb-2">{usernameError}</p>}
+            <Button onClick={saveUsername} disabled={!username || loading} loading={loading} text="Save & Login" />
           </>
         )}
+
+        <p className="text-gray-500 text-center mt-2 text-[10px]">
+          Mukhtar Alam © 2025 <span className="text-blue-500 underline">Terms & Conditions</span>
+        </p>
       </div>
     </div>
   );
 }
+
+// ✅ Reusable InputField Component
+const InputField = ({ label, value, onChange, placeholder }) => (
+  <div className="flex flex-col gap-1 text-xs">
+    <label>{label}</label>
+    <input
+      type="text"
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      className="border rounded p-2 outline-none focus:border-black w-full"
+      placeholder={placeholder}
+    />
+  </div>
+);
+
+// ✅ Reusable Button Component
+const Button = ({ onClick, disabled, loading, text }) => (
+  <button
+    onClick={onClick}
+    disabled={disabled}
+    className="bg-black text-white w-full p-2 rounded mt-3 text-xs disabled:bg-gray-500 disabled:cursor-not-allowed active:bg-gray-800"
+  >
+    {loading ? "Processing..." : text}
+  </button>
+);
