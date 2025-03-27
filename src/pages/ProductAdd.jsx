@@ -5,11 +5,14 @@ import TextareaField from '../components/TextareaField.jsx'
 import SelectField from '../components/SelectField.jsx'
 import ProductTable from '../components/ProductTable.jsx'
 import { useAuth } from '../context/AuthContext.jsx'
+import { useProducts } from "../context/ProductContext.jsx";
 
 const backendUri = import.meta.env.VITE_BACKEND_URI;
  
 export default function Product() {
   const { user } = useAuth();
+  const { fetchProducts } = useProducts();
+  const [buttonText, setButtonText] = useState("Continue");
   const [images, setImages] = useState([])
   const [isDisabled, setIsDisabled] = useState(true);
   const [formData, setFormData] = useState({
@@ -43,6 +46,7 @@ export default function Product() {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  
 
   const units = ["kg", "g", "mg", "ton", "lb", "oz", "cm", "mm", "meter", "inch", "feet", "yard", "mile", "litre", "ml", "gallon", "cup", "piece", "dozen"];
   const categories = ["Arts & Crafts", "Automotive", "Beauty", "Books", "Electronics", "Fashion", "Fitness", "Furniture", "Groceries", "Jewelry", "Kids", "Kitchen", "Makeup", "Men's Clothing", "Mobiles", "Office", "Outdoor", "Pet Supplies", "School", "Skincare", "Smart Home", "Snacks", "Toys", "Women's Clothing"];
@@ -53,8 +57,10 @@ export default function Product() {
   }, [formData]);
 
   const handleContinue = async () => {
+    setIsDisabled(true);
+    setButtonText("Creating...")
+    
     const data = new FormData();
-  
     // Append other form fields
     Object.keys(formData).forEach((key) => {
       if (key !== "images") {
@@ -74,11 +80,14 @@ export default function Product() {
       });
   
       setFormData({title: "",price: "",category: "",quantity: "",unit: "",description: "",author: "",images: []})
-      console.log("Product added successfully:", response.data);
-      alert("Product Created successfully")
+      fetchProducts()
+      alert("Product Created Successfully")
+      setButtonText("Continue"); 
     } catch (error) {
       console.error("Error adding product:", error.response?.data || error.message);
+      setButtonText("Continue"); 
     }
+    setIsDisabled(false)
   };
   
   return (
@@ -112,9 +121,9 @@ export default function Product() {
         <button
           onClick={handleContinue}
           disabled={isDisabled}
-          className={`py-2 px-5 rounded text-white text-sm ${isDisabled ? "bg-gray-400 cursor-not-allowed" : "bg-black"}`}
+          className={`py-3 px-8 rounded text-white text-sm ${isDisabled ? "bg-gray-400 cursor-not-allowed" : "bg-black"}`}
         >
-          Continue
+            {buttonText}
         </button>
 
       </div>

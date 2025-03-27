@@ -69,7 +69,7 @@ export default function Login() {
   };
 
   return (
-    <div className="h-screen flex justify-center items-end lg:items-center">
+    <div className="h-screen flex justify-center items-center">
       <div className="bg-white  w-[85vw] lg:w-[30vw] p-3 shadow rounded mb-16 lg:mb-0">
         <div className="w-full text-center">
           <h1 className="text-lg font-bold">Nasara Admin</h1>
