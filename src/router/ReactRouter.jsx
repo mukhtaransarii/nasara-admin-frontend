@@ -4,6 +4,7 @@ import Home from '../pages/Home.jsx'
 import ProductAdd from '../pages/ProductAdd.jsx'
 import ProductList from '../pages/ProductList.jsx'
 import ProductOrder from '../pages/ProductOrder.jsx'
+import Profile from '../pages/Profile.jsx'
 
 export default function ReactRouter() {
   return (
@@ -13,6 +14,7 @@ export default function ReactRouter() {
         <Route path="/product-add"  element={<ProductAdd/>}/>
         <Route path="/product-list"  element={<ProductList/>}/>
         <Route path="/product-order"  element={<ProductOrder/>}/>
+        <Route path="/profile"  element={<Profile/>}/>
       </Routes>
     </div>
   )
