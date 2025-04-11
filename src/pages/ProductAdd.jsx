@@ -23,6 +23,7 @@ export default function Product() {
     unit: "",
     description: "",
     author: user.username,
+    originalPrice: "",
     images: [],
   });
 
@@ -79,7 +80,7 @@ export default function Product() {
         headers: { "Content-Type": "multipart/form-data" },
       });
   
-      setFormData({title: "",price: "",category: "",quantity: "",unit: "",description: "",author: "",images: []})
+      setFormData({title: "",price: "",category: "",quantity: "",unit: "",description: "",author: "", originalPrice:"",images: []})
       fetchProducts()
       alert("Product Created Successfully")
       setButtonText("Continue"); 
@@ -110,6 +111,7 @@ export default function Product() {
         
         <InputField name="title" value={formData.title} onChange={handleChange} label="Title" type="text" placeholder="Enter title" />
         <InputField name="price" value={formData.price} onChange={handleChange} label="Price" type="number" placeholder="Enter price" />
+        <InputField name="originalPrice" value={formData.originalPrice} onChange={handleChange} label="originalPrice" type="number" placeholder="Enter originalPrice" />
   
         <div className="flex gap-1">
           <SelectField name="category" value={formData.category} onChange={handleChange} label="Category" options={categories} />
