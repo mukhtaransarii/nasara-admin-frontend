@@ -28,7 +28,7 @@ html{
 }
 
 * {
-  scrollbar-width: none; /* FireFox */
+  scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer & Edge */
 }
 
