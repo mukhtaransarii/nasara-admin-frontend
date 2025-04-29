@@ -110,8 +110,8 @@ export default function Product() {
         </div>
         
         <InputField name="title" value={formData.title} onChange={handleChange} label="Title" type="text" placeholder="Enter title" />
-        <InputField name="price" value={formData.price} onChange={handleChange} label="Price" type="number" placeholder="Enter price" />
-        <InputField name="originalPrice" value={formData.originalPrice} onChange={handleChange} label="originalPrice" type="number" placeholder="Enter originalPrice" />
+        <InputField name="price" value={formData.price} onChange={handleChange} label="Price" type="number" placeholder="Enter discount price" />
+        <InputField name="originalPrice" value={formData.originalPrice} onChange={handleChange} label="originalPrice" type="number" placeholder="Enter Price" />
   
         <div className="flex gap-1">
           <SelectField name="category" value={formData.category} onChange={handleChange} label="Category" options={categories} />
