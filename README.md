@@ -1,12 +1,80 @@
-# React + Vite
+# 🖥️ Nasara Admin — Store Management Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-nasaraa--admin.vercel.app-blue?style=flat-square&logo=vercel)](https://nasaraa-admin.vercel.app)
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react)](https://reactjs.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com)
 
-Currently, two official plugins are available:
+> The admin dashboard for the Nasara e-commerce platform. Store owners can manage their products, view and update orders, and monitor business activity from one central panel.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🌐 Live Demo
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+👉 [nasaraa-admin.vercel.app](https://nasaraa-admin.vercel.app)
+
+---
+
+## ✨ Features
+
+- 🔐 **Secure Admin Login** — JWT-protected admin access
+- 📦 **Product Management** — Add, edit, delete products with category support
+- 🧾 **Order Dashboard** — View all incoming orders with status control
+- 📊 **Real-time Updates** — Live order and inventory sync
+- 📱 **Responsive UI** — Works smoothly on desktop and mobile
+- 🎨 **Clean Design** — Built with Tailwind CSS for fast, modern UI
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Frontend | React.js, Vite |
+| Styling | Tailwind CSS |
+| State | Context API / Redux |
+| Auth | JWT (stored in localStorage) |
+| Deployment | Vercel |
+
+---
+
+## 🚀 Getting Started
+
+```bash
+# Clone the repository
+git clone https://github.com/mukhtaransarii/nasara-admin-frontend.git
+cd nasara-admin-frontend
+
+# Install dependencies
+npm install
+
+# Set environment variable
+touch .env
+```
+
+Add to `.env`:
+
+```env
+VITE_API_URL=https://nasara-backend.onrender.com
+```
+
+```bash
+# Start development server
+npm run dev
+```
+
+---
+
+## 📁 Related Repositories
+
+| Repo | Description |
+|------|-------------|
+| [nasara](https://github.com/mukhtaransarii/nasara) | Customer frontend |
+| [nasara-backend](https://github.com/mukhtaransarii/nasara-backend) | Main API server |
+| [nasara-admin-backend](https://github.com/mukhtaransarii/nasara-admin-backend) | Admin API server |
+
+---
+
+## 👤 Author
+
+**Mukhtar Alam** — Full Stack Developer  
+[Portfolio](https://mukhtaralam.vercel.app) · [GitHub](https://github.com/mukhtaransarii) · [LinkedIn](https://linkedin.com/in/iibbs)
